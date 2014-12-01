@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>learn-colors-app</title>
+        <style type="text/css">
+            body {
+                width: 100%;
+                margin: 0;
+                font-family: sans-serif;
+                font-size: 1200%;
+            }
+
+            #color_name_display {
+                color: black;
+                background-color: white;
+                padding: 0.1em;
+                margin: 0;
+                text-align: center;
+                text-shadow: 0.05em 0.05em 0.1em gray;
+            }
+        </style>
+    </head>
+    <body id="card">
+        <div id="color_name_display"></div>
+    </body>
+    <script type="text/javascript">
+        colors = {
+            'white': 'white',
+            'black': 'black',
+            'blue': '#3366CC',
+            'green': 'green',
+            'yellow': 'yellow',
+            'orange': 'orange',
+            'pink': 'pink',
+            'red': 'red',
+            'purple': 'purple',
+            'brown': '#663300',
+        };
+
+        var changeColor = function() {
+            var color_list = Object.keys(colors);
+            var color_name = color_list[window.cursor];
+            document.body.style.backgroundColor = colors[color_name];
+            var color_name_display = document.getElementById('color_name_display');
+            color_name_display.innerHTML = color_name;
+            window.cursor = (window.cursor + 1) % color_list.length;
+        }
+
+
+        window.cursor = 1;
+        document.body.onload = changeColor;
+        document.body.addEventListener('touchstart', changeColor, false);
+        document.body.onclick = changeColor;
+    </script>
+</html>
